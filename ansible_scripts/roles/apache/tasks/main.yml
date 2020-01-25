@@ -1,0 +1,10 @@
+  - name: install lamp stack
+    apt:
+      name: apache2, php7.2, libapache2-mod-php7.2, php-mysql
+      state: latest
+
+  - name: start apache service
+    service:
+      name: apache2
+      state: started
+      enabled: yes

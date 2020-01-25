@@ -1,0 +1,32 @@
+  - name: Install MySQL
+    apt:
+      name: python-mysqldb, mysql-server
+
+  - name: Start the MySQL service
+    service: 
+      name: mysql 
+      state: started
+      enabled: true
+
+  - name: Enable Remote access
+    lineinfile:
+      path: /etc/mysql/mysql.conf.d/mysqld.cnf
+      regexp: 'bind-address'
+      line: bind-address = 0.0.0.0
+
+  - name: Restart Mysql
+    shell: /etc/init.d/mysql restart
+
+  # - name: update mysql root password for all root accounts
+  #   mysql_user: 
+  #     name: root 
+  #     host: "{{ item }}" 
+  #     password: passwordComplex2019*
+  #     login_user: root
+  #     login_password: passwordComplex2019*
+  #     check_implicit_admin: yes
+  #     priv: "*.*:ALL,GRANT"
+  #   with_items:
+  #     - 127.0.0.1
+  #     - ::1
+  #     - localhost
