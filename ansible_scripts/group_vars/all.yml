@@ -1,0 +1,7 @@
+resource_group: __resource_group__
+location: __location__
+vmuser: __vmuser__
+dnsapp: __dnsapp__
+dnsbd: __dnsbd__
+vmsize: __vmsize__
+vnname: __vnname__

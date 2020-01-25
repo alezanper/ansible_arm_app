@@ -1,0 +1,8 @@
+myvmalezanper1.eastus.cloudapp.azure.com
+myvmalezanper2.eastus.cloudapp.azure.com
+
+[webserver]
+myvmalezanper1.eastus.cloudapp.azure.com
+
+[database]
+myvmalezanper2.eastus.cloudapp.azure.com
