@@ -1,0 +1,14 @@
+- name: Moving files to host
+  hosts: [database]
+  remote_user: alezanper
+  become: yes
+  become_method: sudo
+
+  tasks: 
+    - name: copy file to remote host
+      copy:
+        src: /home/alezanper/users.sql
+        dest: /home/alezanper/
+
+    - name: create database
+      shell: mysql < /home/alezanper/users.sql

@@ -1,0 +1,23 @@
+- name: Moving files to host
+  hosts: [webserver]
+  remote_user: alezanper
+  become: yes
+  become_method: sudo
+
+  tasks: 
+    - name: copy file to remote host
+      copy:
+        src: /home/alezanper/{{ item }}
+        dest: /var/www/html
+      with_items:
+        - index.php
+        - db_connection.php
+        - delete.php
+        - insert.php
+        - style.css
+        - update.php
+
+    - name:  delete file in a remote server
+      file:
+        path: /var/www/html/index.html
+        state: absent

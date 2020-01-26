@@ -1,0 +1,5 @@
+- name: Create Azure VM from ARM
+  hosts: localhost
+  tasks:
+  - include: tasks/create_vm_app.yml
+  - include: tasks/create_vm_bd.yml
