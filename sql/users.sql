@@ -19,3 +19,4 @@ CREATE TABLE IF NOT EXISTS users (
   username varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   user_email varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL UNIQUE KEY 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
