@@ -1,0 +1,31 @@
+  - name: Create Azure VM for BD
+    azure_rm_deployment:
+      resource_group: "{{ resource_group }}"
+      name: myDeployment
+      parameters:
+        tag:
+          value: database
+        dns:
+          value: "{{ dnsbd }}"
+        location:
+          value: "{{ location }}"
+        publicIpAddressName:
+          value: "PIAN-{{ dnsbd }}"
+        networkInterfaceName:
+          value: "NIF-{{ dnsbd }}"
+        networkSecurityGroupName:
+          value: "NSG-{{ dnsbd }}"
+        virtualNetworkName:
+          value: "{{ vnname }}"
+        virtualMachineName:
+          value: "{{ dnsbd }}"
+        virtualMachineRG:
+          value: "RG-{{ dnsbd }}"
+        virtualMachineSize:
+          value: "{{ vmsize }}"
+        adminUsername:
+          value: "{{ vmuser }}"
+        adminPublicKey:
+          value: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCcMEv1DHEEpc2Or5TarwRVtLijVA43uxHKV/C8JeCX4j/7tvTYv/1gPrc9xy2Aj0/K23L6zP4EXbTJf+lVtwAS7DFWAsymGywkLe/f3t+Y7ispQYZGjcVzwzDEL+cOFLXxZI4eeVMBXwm5VaA4+w+cBHLhIYAzvyc5NWU7P595HxrGdbU0FsTNXQ2MsfZL55jRoXGD4zxiY5VwAkd3bRnZl+6Odp7RFK8w48i2+Semz3QMrieLp2avQkQyQNz1+K7OXbWkwjzuzToMATR1xeAgj2R4NWbHJfzkMZA5rambPrZlyXWOrJS2ON7SEdKw9vfQhdp4iQ7mY/hwnqbr6pef alezanper@ansiblemaster"
+      template: "{{ lookup('file','/home/alezanper/vm.json') | from_json }}"
+    register: azure
